@@ -1,0 +1,42 @@
+.auth-login-form {
+    margin-top: 50px;
+}
+
+
+.auth-register-form {
+    margin-top: 20px;
+}
+
+
+.brand-link, .brand-link:hover {
+    text-decoration: none;
+    cursor: default;
+    color: inherit;
+}
+
+
+.task-type-header a {
+    text-decoration: none;
+}
+
+.heading {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.update-page {
+    margin-bottom: 30px;
+}
+
+
+.main {
+    margin-top: 50px;
+}
+
+.dashboard {
+    margin-top: 20px;
+}
+
+.tasks-panel {
+    margin-top: 30px;
+}
