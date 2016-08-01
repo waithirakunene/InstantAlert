@@ -13,8 +13,7 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(64), unique=True, index=True)
     username = db.Column(db.String(64), unique=True, index=True)
     password_hash = db.Column(db.String(128))
-    is_admin = db.Column(db.Boolean, default=False)
-   
+      
     
 
     @property
@@ -41,8 +40,17 @@ class Message(db.Model):
     message_body = db.Column(db.String(64), unique=True, index=True)
 
 
+class Farmer(db.Model):
+    __tablename__= 'farmers'
+    id = db.Column(db.Integer,primary_key=True)
+    farmers_name = db.Column(db.String(64))
+    farmers_id_no = db.Column(db.Integer, unique=True)
+    gender = db.Column(db.String)
+    location = db.Column(db.String)
+    type_of_farming = db.Column(db.String)
 
 
 
 
+   
 

@@ -11,10 +11,11 @@
             <div class="col-sm-3" >
                 <div class="row">
                     <div class="list-group">
-                        {% if current_user.is_admin %}
+                       
                         <a href="{{ url_for('main.index') }}" class="list-group-item selected">Notify A farmer</a>
+                        <a href="{{ url_for('main.add_farmer') }}" class="list-group-item">Add Farmer</a>
                         
-                        {% endif %}
+                        
                     </div>
                 </div>
             </div>
@@ -27,7 +28,7 @@
                             {{ message }}                    
                         </div>
                     {% endfor %}
-                    
+                  
                     
                     <div class="col-sm-11 col-sm-offset-1">
                         {% block dashboard %}
