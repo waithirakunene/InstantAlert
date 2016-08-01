@@ -38,8 +38,9 @@ def add_farmer():
 
             db.session.add(farmer)
             db.session.commit() 
-            return redirect(url_for('main.index'))    
+              
             flash('New farmer added.')
+            return redirect(url_for('main.add_farmer')) 
     return render_template('main/add_farmer.html', form=form)
       
 
