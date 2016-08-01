@@ -11,7 +11,6 @@ from app.main.forms import (
 @login_required
 def index():
     form =  SendMessageForm()
-    if current_user.is_admin:
         if form.validate_on_submit():
             message = Message( 
                     send_to = form.message.data,
