@@ -11,15 +11,14 @@ from app.main.forms import (
 @login_required
 def index():
     form =  SendMessageForm()
-        if form.validate_on_submit():
-            message = Message( 
-                    send_to = form.message.data,
-                    message_body= form.message_body.data,
-                    
-                    )
-            db.session.add(message)
-            db.session.commit()
-            return redirect(url_for('main.index'))
+    if form.validate_on_submit():
+        message = Message( 
+                send_to = form.message.data,
+                message_body= form.message_body.data
+            )
+        db.session.add(message)
+        db.session.commit()
+        return redirect(url_for('main.index'))
         flash('Message Sent')
     return render_template('main/message.html', form=form)
 
