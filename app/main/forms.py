@@ -1,3 +1,4 @@
+from AfricasTalkingGateway import AfricasTalkingGateway, AfricasTalkingGatewayException
 from flask import flash
 from flask_wtf import Form
 from ..models import Message, User, Farmer
@@ -9,6 +10,7 @@ from wtforms.validators import Required, Length, ValidationError, Regexp, Email,
 
 class AddFarmersForm(Form):
     farmers_name = StringField("Farmers Name",validators=[Required(), Length(8, 50)])
+    phone_no = IntegerField("Phone Number")
     farmers_id_no = IntegerField("Farmers id_no")
     gender = SelectField("Gender", choices=[('M','Male'), ('F','Female')])
     location = SelectField("County", choices=[('Nai','Nairobi'),('Nax','Nakuru'),('ksmu','Kisumu'),('Eld','Eldoret'),('Kymbu','Kiambu'),('Macha','Machakos')])
@@ -19,7 +21,8 @@ class AddFarmersForm(Form):
 
     
 class SendMessageForm(Form):
-    send_to = SelectField("Send_To", coerce=int)
+    to = SelectField("Send_To", coerce=int)
+    farmers_name = StringField("Farmers Name")
     message = TextAreaField("Message")
     
     submit = SubmitField("Submit")
@@ -27,11 +30,15 @@ class SendMessageForm(Form):
     def __init__(self, *args, **kwargs):
 
         super(SendMessageForm, self).__init__(*args, **kwargs)
-        self.send_to.choices = [
-          (i.id, i.farmers_name) for i in Farmer.query.order_by(Farmer.farmers_name).all()
+        self.to.choices = [
+          (i.id, i.phone_no) for i in Farmer.query.order_by(Farmer.phone_no).all()
         ]
 
+        # gateway = AfricasTalkingGateway("Kunene","be141cfbfa9cf4ac79d6784ef3cf41e88a542ccf9757b93125724bdbfe23c238")
+        # submit = gateway.sendMessage("0702212525, 0701887723", "message")
+            
 
 
+   
 
   

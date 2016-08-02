@@ -36,14 +36,16 @@ class User(UserMixin, db.Model):
 class Message(db.Model):
     __tablename__ = 'messages'
     id = db.Column(db.Integer, primary_key=True)
-    send_to = db.Column(db.Integer, db.ForeignKey('users.id'))
-    message_body = db.Column(db.String(64), unique=True, index=True)
+    to = db.Column(db.Integer, db.ForeignKey('users.id'))
+    farmers_name = db.Column(db.String)
+    message = db.Column(db.String(64), unique=True, index=True)
 
 
 class Farmer(db.Model):
     __tablename__= 'farmers'
     id = db.Column(db.Integer,primary_key=True)
     farmers_name = db.Column(db.String(64))
+    phone_no = db.Column(db.Integer)
     farmers_id_no = db.Column(db.Integer, unique=True)
     gender = db.Column(db.String)
     location = db.Column(db.String)

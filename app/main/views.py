@@ -3,9 +3,9 @@ from flask_login import login_required, current_user
 from app import db
 from app.main import main
 from ..models import User, Message, Farmer
-from app.main.forms import (
-   SendMessageForm, AddFarmersForm
-)
+from app.main.forms import SendMessageForm, AddFarmersForm
+   
+
 
 @main.route('/', methods=['GET', 'POST'])
 @login_required
@@ -13,8 +13,9 @@ def index():
     form =  SendMessageForm()
     if form.validate_on_submit():
         message = Message( 
-                send_to = form.message.data,
-                message_body= form.message_body.data
+                to = form.to.data,
+                farmers_name = form.farmers_name.data,
+                message = form.message.data
             )
         db.session.add(message)
         db.session.commit()
@@ -29,6 +30,7 @@ def add_farmer():
     if form.validate_on_submit():
             farmer = Farmer(
                 farmers_name=form.farmers_name.data,
+                phone_no = form.phone_no.data,
                 farmers_id_no=form.farmers_id_no.data,
                 gender=form.gender.data,
                 location=form.location.data,
