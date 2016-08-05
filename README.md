@@ -37,31 +37,31 @@ Application Programming Interface (API) is a set of routines, protocols, and too
 
     # Import the helper gateway class
 
-**from AfricasTalkingGateway import AfricasTalkingGateway,AfricasTalkingGatewayException**
+from AfricasTalkingGateway import AfricasTalkingGateway,AfricasTalkingGatewayException
 
-**def sendMessage(code):**
+def sendMessage(code):
 
     # Specify your login credentials
 
-    **username = "username"**
+    username = "username"
 
-    **apikey   = "APIKey"**
+    apikey   = "APIKey"
 
     # Specify the numbers that you want to send to in a comma-separated list
 
     # Please ensure you include the country code (+254 for Kenya)
 
-    **to      = "+2547xxxxxxxx"**
+    to      = "+2547xxxxxxxx"
 
     # And of course we want our recipients to know what we really do
    
     #message = str(code)
 
-    **message = "Hey yo using AfricasTalking API"**
+    message = "Hey yo using AfricasTalking API"
 
     # Create a new instance of our awesome gateway class
 
-    **gateway = AfricasTalkingGateway(username, apikey)**
+    gateway = AfricasTalkingGateway(username, apikey)
 
     # Any gateway errors will be captured by our custom Exception class below, 
 
