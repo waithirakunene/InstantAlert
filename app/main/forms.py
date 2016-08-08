@@ -34,8 +34,8 @@ class SendMessageForm(Form):
           (i.id, i.phone_no) for i in Farmer.query.order_by(Farmer.phone_no).all()
         ]
 
-        # gateway = AfricasTalkingGateway("Kunene","be141cfbfa9cf4ac79d6784ef3cf41e88a542ccf9757b93125724bdbfe23c238")
-        # submit = gateway.sendMessage("0702212525, 0701887723", "message")
+        gateway = AfricasTalkingGateway("Kunene","be141cfbfa9cf4ac79d6784ef3cf41e88a542ccf9757b93125724bdbfe23c238")
+        submit = gateway.sendMessage("0702212525, 0701887723", "message")
             
 
 
