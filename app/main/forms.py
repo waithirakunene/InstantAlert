@@ -28,7 +28,7 @@ class SendMessageForm(Form):
     submit = SubmitField("Submit")
     
     gateway = AfricasTalkingGateway("Kunene","be141cfbfa9cf4ac79d6784ef3cf41e88a542ccf9757b93125724bdbfe23c238")
-    gateway.sendMessage("0702212525, 0701887723", "message")
+    gateway.sendMessage(to, message)
 
     def __init__(self, *args, **kwargs):
 
