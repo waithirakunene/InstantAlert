@@ -1,11 +1,8 @@
-from AfricasTalkingGateway import AfricasTalkingGateway, AfricasTalkingGatewayException
 from flask import flash
 from flask_wtf import Form
 from ..models import Message, User, Farmer
 from wtforms import SubmitField, SelectField, StringField, TextAreaField, IntegerField, BooleanField, HiddenField
 from wtforms.validators import Required, Length, ValidationError, Regexp, Email, NumberRange
-
-
 
 
 class AddFarmersForm(Form):
@@ -18,23 +15,15 @@ class AddFarmersForm(Form):
     submit = SubmitField("Submit")
 
 
-
-    
 class SendMessageForm(Form):
     to = SelectField("Send_To", coerce=int)
     farmers_name = StringField("Farmers Name")
     message = TextAreaField("Message")
     
     submit = SubmitField("Submit")
-    
-    gateway = AfricasTalkingGateway("Kunene","be141cfbfa9cf4ac79d6784ef3cf41e88a542ccf9757b93125724bdbfe23c238")
-    gateway.sendMessage(to, message)
 
     def __init__(self, *args, **kwargs):
-
         super(SendMessageForm, self).__init__(*args, **kwargs)
         self.to.choices = [
-          (i.id, i.phone_no) for i in Farmer.query.order_by(Farmer.phone_no).all()
+          (i.phone_no, i.id) for i in Farmer.query.order_by(Farmer.phone_no).all()
         ]
-
-  

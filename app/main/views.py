@@ -1,3 +1,4 @@
+from AfricasTalkingGateway import AfricasTalkingGateway
 from flask import render_template, url_for, redirect, abort, flash, request, current_app
 from flask_login import login_required, current_user
 from app import db
@@ -6,22 +7,28 @@ from ..models import User, Message, Farmer
 from app.main.forms import SendMessageForm, AddFarmersForm
    
 
-
 @main.route('/', methods=['GET', 'POST'])
 @login_required
 def index():
     form =  SendMessageForm()
     if form.validate_on_submit():
-        message = Message( 
+        message = Message(
                 to = form.to.data,
                 farmers_name = form.farmers_name.data,
                 message = form.message.data
             )
+
+        print form.to.data, form.message.data
+        gateway = AfricasTalkingGateway("Kunene","be141cfbfa9cf4ac79d6784ef3cf41e88a542ccf9757b93125724bdbfe23c238")
+        gateway.sendMessage(str(form.to.data), form.message.data)
+
         db.session.add(message)
         db.session.commit()
         return redirect(url_for('main.index'))
         flash('Message Sent')
+
     return render_template('main/message.html', form=form)
+
 
 @main.route('/add_farmer', methods=['GET','POST'])
 @login_required
