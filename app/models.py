@@ -6,28 +6,28 @@ from flask_login import UserMixin
 from . import db
 from . import login_manager
 #from app import app
-import sys
+#import sys
 
 
-if sys.version_info >= (3, 0):
-    enable_search = False
-else:
-    enable_search = True
-    import flask.ext.whooshalchemy as whooshalchemy
+# if sys.version_info >= (3, 0):
+#     enable_search = False
+# else:
+#     enable_search = True
+#     import flask.ext.whooshalchemy as whooshalchemy
 
-class Farmer(db.Model):
-    __searchable__ = ['farmers_name']
+# class Farmer(db.Model):
+#     __searchable__ = ['farmers_name']
 
-    id = db.Column(db.Integer, primary_key=True)
-    farmers_name = db.Column(db.String(64))
-    farmers_id_no = db.Column(db.Integer, unique=True)
+#     id = db.Column(db.Integer, primary_key=True)
+#     farmers_name = db.Column(db.String(64))
+#     farmers_id_no = db.Column(db.Integer, unique=True)
     
 
-    def __repr__(self):
-        return '<Farmer %r>' % (self.farmers_name)
+#     def __repr__(self):
+#         return '<Farmer %r>' % (self.farmers_name)
 
-if enable_search:
-    whooshalchemy.whoosh_index(app, Farmer)  
+# if enable_search:
+#     whooshalchemy.whoosh_index(app, Farmer)  
 
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
