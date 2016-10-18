@@ -25,5 +25,5 @@ class SendMessageForm(Form):
     def __init__(self, *args, **kwargs):
         super(SendMessageForm, self).__init__(*args, **kwargs)
         self.to.choices = [
-          (i.id, i.phone_no) for i in Farmer.query.order_by(Farmer.phone_no).all()
+          (i.phone_no, i.phone_no) for i in Farmer.query.order_by(Farmer.phone_no).all()
         ]
