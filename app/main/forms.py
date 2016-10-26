@@ -16,7 +16,7 @@ class AddFarmersForm(Form):
 
 class SendMessageForm(Form):
     to = SelectField("Send_To", coerce=int)
-    farmers_name = StringField("Farmers Name")
+    # farmers_name = StringField("Farmers Name")
     message = TextAreaField("Message")
     
     submit = SubmitField("Submit")
