@@ -1,5 +1,5 @@
 from AfricasTalkingGateway import AfricasTalkingGateway
-from flask import render_template, url_for, redirect, abort, flash, request, current_app
+from flask import render_template, url_for, redirect, abort, flash, request, current_app, jsonify
 from flask_login import login_required, current_user
 from app import db
 from app.main import main
@@ -51,5 +51,12 @@ def add_farmer():
             flash('New farmer added.')
             return redirect(url_for('main.add_farmer')) 
     return render_template('main/add_farmer.html', form=form)
-      
 
+
+@main.route('/view-messages')
+@login_required
+def view_messages():
+    
+    messages = Message.query.all()
+
+    return render_template('main/view_messages.html', messages=messages)  
