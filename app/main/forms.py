@@ -1,4 +1,3 @@
-from flask import flash
 from flask_wtf import Form
 from ..models import Message, User, Farmer
 from wtforms import SubmitField, SelectField, StringField, TextAreaField, IntegerField, BooleanField, HiddenField
@@ -25,5 +24,6 @@ class SendMessageForm(Form):
     def __init__(self, *args, **kwargs):
         super(SendMessageForm, self).__init__(*args, **kwargs)
         self.to.choices = [
-          (i.phone_no, i.phone_no) for i in Farmer.query.order_by(Farmer.phone_no).all()
+          (i.phone_no, i.farmers_name) for i in Farmer.query.order_by(Farmer.phone_no).all()
         ]
+
