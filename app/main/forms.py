@@ -9,14 +9,14 @@ class AddFarmersForm(Form):
     phone_no = IntegerField("Phone Number")
     farmers_id_no = IntegerField("Farmers id_no")
     gender = SelectField("Gender", choices=[('M','Male'), ('F','Female')])
-    location = SelectField("County", choices=[('Nai','Nairobi'),('Nax','Nakuru'),('ksmu','Kisumu'),('Eld','Eldoret'),('Kymbu','Kiambu'),('Macha','Machakos')])
-    type_of_farming= SelectField("what do you grow?", choices=[('c-p','cash-crop'),('l-f','Livestock-farming'),('s-f','Subsistence-farming')])
+    location = SelectField("County", choices=[('Nai','Nairobi'),('Mu','Muranga'),('Nax','Nakuru'),('ksmu','Kisumu'),('Eld','Eldoret'),('Kymbu','Kiambu'),('Macha','Machakos')])
+    type_of_farming= SelectField("what do you grow?", choices=[('c-p','Tea-Bushes'),('l-f','Livestock-farming'),('s-f','Subsistence-farming')])
     submit = SubmitField("Submit")
 
 
 class SendMessageForm(Form):
     to = SelectField("Send_To", coerce=int)
-    # farmers_name = StringField("Farmers Name")
+    farmers_name = StringField("Confirm Farmers Name")
     message = TextAreaField("Message")
     
     submit = SubmitField("Submit")
